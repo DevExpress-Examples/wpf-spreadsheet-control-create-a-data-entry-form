@@ -1,0 +1,72 @@
+﻿<dx:ThemedWindow
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WpfDataEntryFormSample"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxsps="http://schemas.devexpress.com/winfx/2008/xaml/spreadsheet"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    x:Class="WpfDataEntryFormSample.MainWindow"
+    mc:Ignorable="d"
+    Title="Spreadsheet Data Entry From Sample" Height="722" Width="896" WindowStartupLocation="CenterScreen" Icon="DevExpress.ico" ShowIcon="False" Loaded="MainWindow_Loaded">
+    <Window.Resources>
+        <local:PayrollData x:Key="PayrollData" />
+        <CollectionViewSource x:Key="PayrollViewSource" Source="{StaticResource PayrollData}" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <dxsps:SpreadsheetControl
+            x:Name="spreadsheetControl1"
+            ShowTabSelector="False"
+            BorderThickness="0"
+            VerticalScrollbarVisibility="Hidden"
+            HorizontalScrollbarVisibility="Hidden"
+            CustomCellEdit="SpreadsheetControl1_CustomCellEdit"
+            ProtectionWarning="SpreadsheetControl1_ProtectionWarning"
+            SelectionChanged="SpreadsheetControl1_SelectionChanged">
+            <dxsps:SpreadsheetControl.Options>
+                <dxsps:SpreadsheetControlOptions>
+                    <dxsps:SpreadsheetControlOptions.Behavior>
+                        <dxsps:SpreadsheetBehaviorOptions>
+                            <dxsps:SpreadsheetBehaviorOptions.Selection>
+                                <dxsps:SpreadsheetSelectionBehaviorOptions HideSelection="True" MoveActiveCellMode="None"/>
+                            </dxsps:SpreadsheetBehaviorOptions.Selection>
+                        </dxsps:SpreadsheetBehaviorOptions>
+                    </dxsps:SpreadsheetControlOptions.Behavior>
+                    <dxsps:SpreadsheetControlOptions.View>
+                        <dxsps:SpreadsheetViewOptions ShowColumnHeaders="False" ShowRowHeaders="False" ShowPrintArea="False"/>
+                    </dxsps:SpreadsheetControlOptions.View>
+                </dxsps:SpreadsheetControlOptions>
+            </dxsps:SpreadsheetControl.Options>
+        </dxsps:SpreadsheetControl>
+
+        <dxb:ToolBarControl Grid.Row="1" AllowCustomizationMenu="False" AllowQuickCustomization="False">
+            <dxb:BarButtonItem
+                Content="First"
+                ToolTip="First record"
+                Glyph="{dx:DXImage SvgImages/Arrows/First.svg}"
+                Command="{DXCommand Execute='MoveFirst()', CanExecute='CanMovePrevious()'}" />
+            <dxb:BarButtonItem
+                Content="Previous"
+                ToolTip="Previous record"
+                Glyph="{dx:DXImage SvgImages/Arrows/Prev.svg}"
+                Command="{DXCommand Execute='MovePrevious()', CanExecute='CanMovePrevious()'}" />
+            <dxb:BarStaticItem Content="{DXBinding Expr='DisplayText'}"/>
+            <dxb:BarButtonItem
+                Content="Next"
+                ToolTip="Next record"
+                Glyph="{dx:DXImage SvgImages/Arrows/Next.svg}"
+                Command="{DXCommand Execute='MoveNext()', CanExecute='CanMoveNext()'}" />
+            <dxb:BarButtonItem
+                Content="Last"
+                ToolTip="Last record"
+                Glyph="{dx:DXImage SvgImages/Arrows/Last.svg}"
+                Command="{DXCommand Execute='MoveLast()', CanExecute='CanMoveNext()'}" />
+        </dxb:ToolBarControl>
+
+    </Grid>
+</dx:ThemedWindow>
