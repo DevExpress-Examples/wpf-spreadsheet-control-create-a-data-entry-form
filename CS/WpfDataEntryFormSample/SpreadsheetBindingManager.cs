@@ -7,11 +7,11 @@ using DevExpress.Xpf.Spreadsheet;
 
 namespace WpfDataEntryFormSample
 {
+    /// <summary>
+    /// This class is used to bind the data source object's properties to spreadsheet cells. 
+    /// </summary>
     public class SpreadsheetBindingManager
     {
-        /// <summary>
-        /// This class is used to bind the data source object's properties to spreadsheet cells. 
-        /// </summary>
         private SpreadsheetControl control;
         private object dataSource;
         private object currentItem;
