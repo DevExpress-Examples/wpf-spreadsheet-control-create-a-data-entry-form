@@ -10,6 +10,6 @@
 
 The following code example shows how to use the SpreadsheetControl to to create a payroll data entry form. Users can enter payroll information (regular and overtime hours worked, sick leave and vacation hours, overtime pay rate and deductions). Once data is entered, the Spreadsheet automatically calculates an employee’s pay and payroll taxes. The data navigator at the bottom of the application allows you to switch between employees.
 
-![image](/media/project_image.png)
+![image](./media/project_image.png)
 
 [Refer to another repository for a WinForms code sample project](https://github.com/DevExpress-Examples/how-to-use-spreadsheet-control-to-create-a-data-entry-form)
